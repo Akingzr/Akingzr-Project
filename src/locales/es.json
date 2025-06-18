@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "name": "Angel Reyes",
+    "tagline": "Soluciones de IA Pioneras para las Marcas del Mañana",
+    "viewPortfolio": "Ver Portafolio",
+    "getInTouch": "Contactar"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "portfolio": "Portafolio",
+    "about": "Acerca",
+    "contact": "Contacto",
+    "letsTalk": "Hablemos"
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "subtitle": "Transformando ideas en soluciones revolucionarias de IA que remodelan industrias",
+    "viewAll": "Ver Todos los Proyectos"
+  },
+  "newsletter": {
+    "title": "Únete a la Lista Visionaria",
+    "subtitle": "Recibe insights de tendencias de IA, construcciones detrás de escena y lanzamientos tempranos de productos.",
+    "placeholder": "Ingresa tu email",
+    "cta": "Unirse Ahora"
+  },
+  "blog": {
+    "title": "Últimas Perspectivas",
+    "subtitle": "Explorando el futuro de la IA y la tecnología",
+    "readMore": "Leer →"
+  },
+  "about": {
+    "title": "Acerca de AKINGZ",
+    "description1": "Soy un arquitecto visionario de IA que transforma desafíos empresariales complejos en soluciones tecnológicas elegantes. Con más de una década de experiencia en desarrollo de IA de vanguardia, he ayudado a empresas Fortune 500 a lograr un crecimiento sin precedentes a través de la automatización inteligente.",
+    "description2": "Mi experiencia abarca aprendizaje automático, redes neuronales, tecnología blockchain y experiencias inmersivas. Creo en empujar los límites de lo posible, creando soluciones que no solo satisfacen las necesidades de hoy sino que anticipan los desafíos del mañana.",
+    "description3": "Cada proyecto que emprendo es una oportunidad para ser pionero en nuevos enfoques, desafiar el pensamiento convencional y entregar resultados que superan las expectativas. No solo construyo tecnología: creo experiencias que transforman negocios e inspiran innovación.",
+    "collaborate": "Colaboremos",
+    "stats": {
+      "projects": "Proyectos de IA",
+      "performance": "Mejora de Rendimiento",
+      "clients": "Clientes Globales",
+      "awards": "Premios Ganados"
+    }
+  },
+  "contact": {
+    "title": "Conectemos",
+    "subtitle": "¿Listo para transformar tu negocio con soluciones de IA de vanguardia? Hablemos sobre cómo podemos hacer realidad tu visión.",
+    "form": {
+      "title": "Enviar un Mensaje",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre completo",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "company": "Empresa",
+      "companyPlaceholder": "Nombre de tu empresa",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+      "send": "Enviar Mensaje"
+    },
+    "info": {
+      "title": "Ponte en Contacto",
+      "email": "Reyesangelreal@gmail.com",
+      "phone": "201-912-9503",
+      "location": "New York, NY"
+    },
+    "social": {
+      "title": "Sígueme"
+    },
+    "availability": {
+      "status": "Disponible para Proyectos",
+      "description": "Actualmente aceptando nuevos proyectos para Q1 2025. Tiempo de respuesta: 24-48 horas."
+    }
+  }
+}

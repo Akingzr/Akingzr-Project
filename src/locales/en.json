@@ -1,0 +1,75 @@
+{
+  "_comment": "Updated hero.subtitle on 2024-06-16: new multiline copy for English hero section",
+  "hero": {
+    "name": "Angel Reyes",
+    "tagline": "Pioneering AI Solutions for Tomorrow's Brands",
+    "viewPortfolio": "View Portfolio",
+    "getInTouch": "Get In Touch",
+    "subtitle": "Where bold brands accelerate with elite AI.\nAutomating growth, elevating experiences, and turning tomorrow's vision into today's results."
+  },
+  "navigation": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact",
+    "letsTalk": "Let's Talk"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Transforming ideas into revolutionary AI solutions that reshape industries",
+    "viewAll": "View All Projects"
+  },
+  "newsletter": {
+    "title": "Join the Visionary List",
+    "subtitle": "Receive AI trend insights, behind-the-scenes builds & early product drops.",
+    "placeholder": "Enter your email",
+    "cta": "Join Now"
+  },
+  "blog": {
+    "title": "Latest Insights",
+    "subtitle": "Exploring the future of AI and technology",
+    "readMore": "Read →"
+  },
+  "about": {
+    "title": "About AKINGZ",
+    "description1": "I'm Angel Reyes, an entrepreneur exploring the power of AI, automation, and digital innovation to help brands, creators, and businesses grow. By building AI-driven content systems, automation frameworks, and scalable SaaS solutions, I create tools that simplify operations, unlock new opportunities, and fuel business growth in today's evolving digital economy.",
+    "description2": "",
+    "description3": "",
+    "collaborate": "Let's Collaborate",
+    "stats": {
+      "projects": "AI Projects",
+      "performance": "Performance Boost",
+      "clients": "Global Clients",
+      "awards": "Awards Won"
+    }
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Ready to transform your business with cutting-edge AI solutions? Let's discuss how we can bring your vision to life.",
+    "form": {
+      "title": "Send a Message",
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "send": "Send Message"
+    },
+    "info": {
+      "title": "Get In Touch",
+      "email": "Reyesangelreal@gmail.com",
+      "phone": "201-912-9503",
+      "location": "New York, NY"
+    },
+    "social": {
+      "title": "Follow Me"
+    },
+    "availability": {
+      "status": "Available for Projects",
+      "description": "Currently accepting new projects for Q1 2025. Response time: 24-48 hours."
+    }
+  }
+}

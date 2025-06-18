@@ -1,0 +1,256 @@
+/* AKINGZ Landing Page Styles
+ * Updated with new color palette and enhanced glass morphism effects
+ * Color palette from "color-palette-2227" with teal/cyan theme
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties - New Color Palette */
+:root {
+  --c-primary-dark: #0F5456;  /* deep teal */
+  --c-primary: #005D74;       /* ocean teal */
+  --c-accent: #12A8E3;        /* bright aqua */
+  --c-neutral-light: #E6E8EA; /* mist grey */
+  --c-neutral-warm: #D6C38E;  /* sand beige (accent only) */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0A0A0A;
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6, .section-title {
+  font-family: 'Sora', 'sans-serif';
+  font-weight: 700;
+}
+
+.hero-title {
+  font-family: 'Syne', 'system-ui', 'sans-serif';
+  font-weight: 700;
+}
+
+.hero-subtitle, .btn, .button, .section-title {
+  font-family: 'Sora', 'sans-serif';
+  font-weight: 600;
+}
+
+p, .body-text, .about-paragraph, .blog-text, input::placeholder, textarea::placeholder {
+  font-family: 'Manrope', 'sans-serif';
+  font-weight: 400;
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  .bg-pos-0 {
+    background-position: 0% 50%;
+  }
+
+  .bg-pos-100 {
+    background-position: 100% 50%;
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* New color utilities using CSS custom properties */
+  .text-primary-dark {
+    color: var(--c-primary-dark);
+  }
+
+  .text-primary {
+    color: var(--c-primary);
+  }
+
+  .text-accent {
+    color: var(--c-accent);
+  }
+
+  .bg-primary-dark {
+    background-color: var(--c-primary-dark);
+  }
+
+  .bg-primary {
+    background-color: var(--c-primary);
+  }
+
+  .bg-accent {
+    background-color: var(--c-accent);
+  }
+
+  .border-primary {
+    border-color: var(--c-primary);
+  }
+
+  .border-accent {
+    border-color: var(--c-accent);
+  }
+}
+
+/* Animations */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(18, 168, 227, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(18, 168, 227, 0.6);
+  }
+}
+
+/* Glass morphism effects - Enhanced */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Custom button styles */
+.btn-magnetic {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.btn-magnetic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transitions for better performance */
+* {
+  will-change: auto;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+/* High contrast for accessibility */
+@media (prefers-contrast: high) {
+  .text-gray-400 {
+    color: #d1d5db;
+  }
+  
+  .text-gray-300 {
+    color: #f3f4f6;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* Performance optimizations */
+img {
+  content-visibility: auto;
+}
+
+/* Canvas styles */
+canvas {
+  display: block;
+}
+
+/* Custom scrollbar for webkit browsers - Updated colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(18, 168, 227, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(18, 168, 227, 0.5);
+}
+
+/* SEO and i18n support */
+html[lang="es"] .lang-en {
+  display: none;
+}
+
+html[lang="en"] .lang-es {
+  display: none;
+}
