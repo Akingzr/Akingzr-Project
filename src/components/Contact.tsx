@@ -72,36 +72,36 @@ const Contact: React.FC = () => {
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/30 to-teal-600/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 px-2">
             <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
               {t('contact.title')}
             </span>
           </h2>
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 font-light tracking-wide max-w-3xl mx-auto hero-subtitle leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 font-light tracking-wide max-w-3xl mx-auto hero-subtitle leading-relaxed px-4">
             {t('contact.subtitle')}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           {/* Left Column - Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.3 }}
-            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8"
+            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 p-4 sm:p-6 md:p-8"
           >
-            <h3 className="text-2xl font-bold text-white mb-8">{t('contact.form.title')}</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8">{t('contact.form.title')}</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div className="group">
                   <label className="block text-sm font-medium text-gray-300 mb-2">{t('contact.form.name')}</label>
                   <input
@@ -174,10 +174,10 @@ const Contact: React.FC = () => {
             className="space-y-8"
           >
             {/* Contact Information */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8">
-              <h3 className="text-2xl font-bold text-white mb-8">{t('contact.info.title')}</h3>
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 p-4 sm:p-6 md:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8">{t('contact.info.title')}</h3>
               
-              <div className="space-y-6">
+                              <div className="space-y-4 md:space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.label}
@@ -208,10 +208,10 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Social Links */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8">
-              <h3 className="text-2xl font-bold text-white mb-8">{t('contact.social.title')}</h3>
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 p-4 sm:p-6 md:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8">{t('contact.social.title')}</h3>
               
-              <div className="flex gap-4">
+                              <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}
@@ -235,7 +235,7 @@ const Contact: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="bg-gradient-to-br from-green-500/20 to-cyan-500/20 backdrop-blur-xl rounded-3xl border border-green-500/20 p-6"
+              className="bg-gradient-to-br from-green-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-green-500/20 p-4 sm:p-6"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
