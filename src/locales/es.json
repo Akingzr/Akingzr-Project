@@ -3,7 +3,8 @@
     "name": "Angel Reyes",
     "tagline": "Soluciones de IA Pioneras para las Marcas del Mañana",
     "viewPortfolio": "Ver Portafolio",
-    "getInTouch": "Contactar"
+    "getInTouch": "Contactar",
+    "subtitle": "Donde las marcas audaces se aceleran con IA de élite.\nAutomatizando el crecimiento, elevando experiencias, y convirtiendo la visión del mañana en los resultados de hoy."
   },
   "navigation": {
     "home": "Inicio",
@@ -30,9 +31,9 @@
   },
   "about": {
     "title": "Acerca de AKINGZ",
-    "description1": "Soy un arquitecto visionario de IA que transforma desafíos empresariales complejos en soluciones tecnológicas elegantes. Con más de una década de experiencia en desarrollo de IA de vanguardia, he ayudado a empresas Fortune 500 a lograr un crecimiento sin precedentes a través de la automatización inteligente.",
-    "description2": "Mi experiencia abarca aprendizaje automático, redes neuronales, tecnología blockchain y experiencias inmersivas. Creo en empujar los límites de lo posible, creando soluciones que no solo satisfacen las necesidades de hoy sino que anticipan los desafíos del mañana.",
-    "description3": "Cada proyecto que emprendo es una oportunidad para ser pionero en nuevos enfoques, desafiar el pensamiento convencional y entregar resultados que superan las expectativas. No solo construyo tecnología: creo experiencias que transforman negocios e inspiran innovación.",
+    "description1": "Soy Angel Reyes, un emprendedor explorando el poder de la IA, automatización e innovación digital para ayudar a marcas, creadores y negocios a crecer. Construyendo sistemas de contenido impulsados por IA, marcos de automatización y soluciones SaaS escalables, creo herramientas que simplifican operaciones, desbloquean nuevas oportunidades y alimentan el crecimiento empresarial en la economía digital en evolución de hoy.",
+    "description2": "",
+    "description3": "",
     "collaborate": "Colaboremos",
     "stats": {
       "projects": "Proyectos de IA",
