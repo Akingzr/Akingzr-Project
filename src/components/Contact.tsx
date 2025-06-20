@@ -221,10 +221,13 @@ const Contact: React.FC = () => {
                     initial={{ opacity: 0, scale: 0 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                    className="group w-14 h-14 bg-gradient-to-r from-teal-600/20 to-cyan-500/20 rounded-2xl flex items-center justify-center hover:from-teal-600/40 hover:to-cyan-500/40 transition-all duration-300 hover:scale-110"
+                    className="group w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(90deg, #FFA645, #FF6A00)',
+                    }}
                     aria-label={social.label}
                   >
-                    <social.icon className="w-6 h-6 text-white group-hover:text-cyan-400 transition-colors duration-300" />
+                    <social.icon className="w-6 h-6 text-white transition-colors duration-300" />
                   </motion.a>
                 ))}
               </div>

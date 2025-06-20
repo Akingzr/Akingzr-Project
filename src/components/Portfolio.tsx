@@ -248,7 +248,7 @@ const Portfolio: React.FC = () => {
                 initial={{ opacity: 0, y: 50, rotateY: -15 }}
                 animate={inView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer text-left w-full"
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer text-left w-full hover:shadow-2xl hover:shadow-orange-500/25 hover:border-orange-500/30"
                 onClick={handleClick}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -294,14 +294,14 @@ const Portfolio: React.FC = () => {
                   {/* Tags */}
                   <div className="flex items-center gap-2 mb-3">
                     {project.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-teal-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-400/30">
+                      <span key={tag} className="px-3 py-1 text-xs font-semibold rounded-full text-white border-none" style={{ background: 'linear-gradient(90deg, #FFA645, #FF6A00)' }}>
                         {tag}
                       </span>
                     ))}
                   </div>
                   
                   {/* Title and Client */}
-                  <h3 className="text-xl font-bold text-white mb-1 truncate">
+                  <h3 className="text-xl font-bold text-white mb-1 truncate group-hover:text-orange-400 transition-colors duration-300">
                     {language === 'es' ? project.titleEs : project.title}
                   </h3>
                   <p className="text-sm text-gray-400 mb-4 hero-subtitle">
@@ -315,12 +315,15 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Bottom decorative bar */}
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-teal-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* External link icon */}
                 <div className="absolute top-6 right-6 p-2 bg-black/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ExternalLink className="w-5 h-5 text-white" />
+                  <ExternalLink className="w-5 h-5 text-white group-hover:text-orange-400 transition-colors duration-300" />
                 </div>
+                
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-amber-500/0 to-orange-500/0 group-hover:from-orange-500/5 group-hover:via-amber-500/5 group-hover:to-orange-500/5 transition-all duration-500 rounded-3xl pointer-events-none"></div>
               </motion.button>
             )
           })}
