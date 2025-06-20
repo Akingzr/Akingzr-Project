@@ -260,7 +260,6 @@ const Portfolio: React.FC = () => {
                     <video
                       ref={videoRef}
                       src={project.video}
-                      poster={project.thumbnail}
                       loop
                       muted
                       playsInline
