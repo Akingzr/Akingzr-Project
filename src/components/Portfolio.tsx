@@ -215,127 +215,115 @@ const Portfolio: React.FC = () => {
 
         {/* Projects Grid - 6 items in 3x2 layout */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
-            <motion.button
-              key={project.id}
-              initial={{ opacity: 0, y: 50, rotateY: -15 }}
-              animate={inView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer text-left w-full"
-              onClick={(e) => {
-                e.preventDefault();
-                console.log('=== BUTTON CARD CLICKED ===');
-                console.log('Project:', project.title);
-                console.log('Video:', project.video);
-                console.log('Thumbnail:', project.thumbnail);
-                
-                if (project.video) {
-                  // Has video - open video modal
-                  handleVideoClick(project.video);
-                } else {
-                  // No video - open image modal
-                  const title = language === 'es' ? project.titleEs : project.title;
-                  handleImageClick(project.thumbnail, title);
-                }
-                console.log('=== END BUTTON CARD CLICK ===');
-              }}
-              onMouseEnter={() => {
-                console.log('Mouse entered card:', project.title);
-                setHoveredProject(project.id);
-              }}
-              onMouseLeave={() => {
-                console.log('Mouse left card:', project.title);
-                setHoveredProject(null);
-              }}
-              style={{
-                transform: `perspective(1000px) rotateY(${hoveredProject === project.id ? '5deg' : '0deg'})`,
-                boxShadow: hoveredProject === project.id ? '0 0 12px #FFA64588' : undefined,
-                border: hoveredProject === project.id ? '1px solid #FFA64555' : undefined,
-              }}
-            >
-              {/* Video Preview */}
-              <div className="relative h-48 overflow-hidden pointer-events-none">
-                {project.video ? (
-                  <video
-                    src={project.video}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    muted
-                    loop
-                    playsInline
-                    onMouseEnter={(e) => {
-                      const video = e.target as HTMLVideoElement;
-                      video.play().catch(() => {
-                        console.log('Video preview play failed - this is normal');
-                      });
-                    }}
-                    onMouseLeave={(e) => {
-                      const video = e.target as HTMLVideoElement;
-                      video.pause();
-                      video.currentTime = 0;
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={project.thumbnail}
-                    alt={language === 'es' ? project.titleEs : project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                
-                {/* Play Button */}
-                {project.video && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-cyan-500/80 backdrop-blur-xl rounded-full flex items-center justify-center shadow-2xl border-2 border-white/30 transition-all duration-300">
-                      <Play className="w-10 h-10 text-white ml-1" />
-                    </div>
-                  </div>
-                )}
+          {projects.map((project, index) => {
+            const videoRef = React.useRef<HTMLVideoElement>(null);
 
-                {/* Tags */}
-                <div className="absolute top-4 left-4 flex gap-2">
-                  {project.tags.slice(0, 2).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full text-xs font-medium border-none"
-                      style={{
-                        background: 'linear-gradient(90deg, #FFA645, #FF6A00)',
-                        color: '#FFFFFF',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            const handleMouseEnter = () => {
+              setHoveredProject(project.id);
+              if (videoRef.current) {
+                videoRef.current.play().catch(() => console.log("Video play interrupted"));
+              }
+            };
+
+            const handleMouseLeave = () => {
+              setHoveredProject(null);
+              if (videoRef.current) {
+                videoRef.current.pause();
+              }
+            };
+            
+            const handleClick = (e: React.MouseEvent) => {
+              e.preventDefault();
+              if (project.video) {
+                handleVideoClick(project.video);
+              } else {
+                const title = language === 'es' ? project.titleEs : project.title;
+                handleImageClick(project.thumbnail, title);
+              }
+            };
+
+            return (
+              <motion.button
+                key={project.id}
+                initial={{ opacity: 0, y: 50, rotateY: -15 }}
+                animate={inView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer text-left w-full"
+                onClick={handleClick}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+              >
+                {/* Media Container */}
+                <div className="relative aspect-video overflow-hidden">
+                  {project.video ? (
+                    <video
+                      ref={videoRef}
+                      src={project.video}
+                      poster={project.thumbnail}
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={project.thumbnail}
+                      alt={language === 'es' ? project.titleEs : project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                  
+                  {/* Play Button Overlay */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none
+                      ${hoveredProject === project.id && project.video ? 'opacity-0' : 'opacity-100'}
+                      ${project.video ? 'bg-black/40' : 'bg-black/20'}`
+                    }
+                  >
+                    {project.video && (
+                      <div className="bg-cyan-500/80 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <Play className="w-8 h-8 text-white" />
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors duration-300">
-                      {language === 'es' ? project.titleEs : project.title}
-                    </h3>
-                    <p className="text-sm text-gray-300 font-light tracking-wide hero-subtitle">
-                      {language === 'es' ? project.clientEs : project.client}
-                    </p>
+                
+                {/* Card Content */}
+                <div className="p-6">
+                  {/* Tags */}
+                  <div className="flex items-center gap-2 mb-3">
+                    {project.tags.slice(0, 2).map(tag => (
+                      <span key={tag} className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-teal-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-400/30">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors duration-300" />
+                  
+                  {/* Title and Client */}
+                  <h3 className="text-xl font-bold text-white mb-1 truncate">
+                    {language === 'es' ? project.titleEs : project.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 mb-4 hero-subtitle">
+                    {language === 'es' ? project.clientEs : project.client}
+                  </p>
+                  
+                  {/* Description */}
+                  <p className="text-gray-300 text-base mb-6 line-clamp-3 hero-subtitle leading-relaxed">
+                    {language === 'es' ? project.descriptionEs : project.description}
+                  </p>
                 </div>
 
-                <p className="text-gray-300 text-sm font-light tracking-wide hero-subtitle leading-relaxed mb-6 line-clamp-2">
-                  {language === 'es' ? project.descriptionEs : project.description}
-                </p>
-
-                {/* Metrics */}
-                {/* Removed metrics grid as requested */}
-              </div>
-
-              {/* Hover Glow Effect - Updated colors */}
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-cyan-500/0 to-teal-500/0 group-hover:from-teal-500/5 group-hover:via-cyan-500/5 group-hover:to-teal-500/5 transition-all duration-500 rounded-3xl"></div>
-            </motion.button>
-          ))}
+                {/* Bottom decorative bar */}
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-teal-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* External link icon */}
+                <div className="absolute top-6 right-6 p-2 bg-black/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ExternalLink className="w-5 h-5 text-white" />
+                </div>
+              </motion.button>
+            )
+          })}
         </div>
 
         {/* View All Button */}
