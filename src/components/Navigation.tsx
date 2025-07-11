@@ -38,10 +38,7 @@ const Navigation: React.FC = () => {
 
   const handleLetsTalk = () => {
     setIsOpen(false);
-    const contactSection = document.querySelector('#contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.open('https://calendly.com/akingz/consultation-consulta', '_blank');
   };
 
   return (

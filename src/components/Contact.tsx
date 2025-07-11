@@ -35,6 +35,24 @@ const Contact: React.FC = () => {
     console.log('Form submitted:', formData);
   };
 
+  const handleViewPortfolio = () => {
+    const portfolioSection = document.querySelector('#portfolio');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleLetsTalkNow = () => {
+    window.open('https://calendly.com/akingz/consultation-consulta', '_blank');
+  };
+
+  const handleSubscribe = () => {
+    const newsletterSection = document.querySelector('#newsletter');
+    if (newsletterSection) {
+      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const contactInfo = [
     { icon: Mail, label: 'Email', value: t('contact.info.email'), link: `mailto:${t('contact.info.email')}` },
     { icon: Phone, label: 'Phone', value: t('contact.info.phone'), link: `tel:${t('contact.info.phone').replace(/\s/g, '')}` },

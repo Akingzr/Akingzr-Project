@@ -1,10 +1,15 @@
 // Main App component for AKINGZ landing page
-// Updated with i18n support and SEO meta tags
+// Updated with new AI-focused sections and optimized landing page structure
+// Includes: Hero, WhatWeDo, Portfolio, WhyBrands, MidPageCTA, Testimonials, About, Contact
 
 import React, { useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
+import WhatWeDo from './components/WhatWeDo';
 import Portfolio from './components/Portfolio';
+import WhyBrands from './components/WhyBrands';
+import MidPageCTA from './components/MidPageCTA';
+import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Contact from './components/Contact';
 import CursorTrail from './components/CursorTrail';
@@ -64,19 +69,24 @@ const AppContent: React.FC = () => {
       
       buttons.forEach(button => {
         button.addEventListener('mouseenter', (e) => {
-          e.currentTarget.style.transform = 'scale(1.02)';
+          const target = e.currentTarget as HTMLElement;
+          if (target) target.style.transform = 'scale(1.02)';
         });
         
         button.addEventListener('mouseleave', (e) => {
-          e.currentTarget.style.transform = 'scale(1)';
+          const target = e.currentTarget as HTMLElement;
+          if (target) target.style.transform = 'scale(1)';
         });
         
         button.addEventListener('mousemove', (e) => {
-          const rect = e.currentTarget.getBoundingClientRect();
+          const target = e.currentTarget as HTMLElement;
+          if (target) {
+            const rect = target.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
           
-          e.currentTarget.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
+            target.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
+          }
         });
       });
     };
@@ -99,8 +109,24 @@ const AppContent: React.FC = () => {
           <Hero />
         </section>
         
+        <section id="what-we-do">
+          <WhatWeDo />
+        </section>
+        
         <section id="portfolio">
           <Portfolio />
+        </section>
+        
+        <section id="why-brands">
+          <WhyBrands />
+        </section>
+        
+        <section id="mid-page-cta">
+          <MidPageCTA />
+        </section>
+        
+        <section id="testimonials">
+          <Testimonials />
         </section>
         
         <section id="about">

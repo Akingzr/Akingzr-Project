@@ -1,6 +1,5 @@
-// [CHANGELOG] 2024-06-16: Fixed image import from public folder. Directly referencing image path in src attribute instead of import statement to resolve Vite module resolution error.
-// Hero section component for AKINGZ landing page
-// Updated with Angel Reyes name and new color palette
+// Updated Hero section component for AKINGZ landing page
+// Updated with new AI-focused messaging and Calendly integration
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -21,11 +20,8 @@ const Hero: React.FC = () => {
     }
   };
 
-  const handleGetInTouch = () => {
-    const contactSection = document.querySelector('#contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleLetsTalkNow = () => {
+    window.open('https://calendly.com/akingz/consultation-consulta', '_blank');
   };
 
   return (
@@ -69,9 +65,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="space-y-4"
         >
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter hero-title">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter hero-title">
             <span className="bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-400 bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-1000 bg-clip-text text-transparent animate-gradient">
-              AKINGZ
+              {t('hero.tagline')}
             </span>
           </h1>
           
@@ -86,16 +82,14 @@ const Hero: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Subtitle (with line break) */}
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
           className="text-lg md:text-xl lg:text-2xl text-gray-300 font-light tracking-wide max-w-4xl mx-auto hero-subtitle leading-relaxed"
         >
-          {t('hero.subtitle').split('\n').map((line, idx) => (
-            <span key={idx} style={{ display: 'block' }}>{line}</span>
-          ))}
+          {t('hero.subtitle')}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -106,18 +100,18 @@ const Hero: React.FC = () => {
           className="flex flex-col sm:flex-row gap-6 justify-center pt-4"
         >
           <button 
-            onClick={handleViewPortfolio}
+            onClick={handleLetsTalkNow}
             className="group relative px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-500 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 btn"
           >
-            <span className="relative z-10">{t('hero.viewPortfolio')}</span>
+            <span className="relative z-10">{t('hero.getInTouch')}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
           
           <button 
-            onClick={handleGetInTouch}
+            onClick={handleViewPortfolio}
             className="group relative px-8 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 hover:bg-white/10 hover:scale-105 btn"
           >
-            <span className="relative z-10">{t('hero.getInTouch')}</span>
+            <span className="relative z-10">{t('hero.viewPortfolio')}</span>
           </button>
         </motion.div>
       </div>

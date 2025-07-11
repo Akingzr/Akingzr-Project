@@ -2,10 +2,10 @@
   "_comment": "Updated hero.subtitle on 2024-06-16: new multiline copy for English hero section",
   "hero": {
     "name": "Angel Reyes",
-    "tagline": "Pioneering AI Solutions for Tomorrow's Brands",
+    "tagline": "AKINGZ",
     "viewPortfolio": "View Portfolio",
-    "getInTouch": "Get In Touch",
-    "subtitle": "Where bold brands accelerate with elite AI.\nAutomating growth, elevating experiences, and turning tomorrow's vision into today's results."
+    "getInTouch": "Let's Talk Now",
+    "subtitle": "AI-Powered Content That Works While You Sleep. From AI UGC to custom avatar influencers we create scroll stopping content that helps your brand grow faster, in any language, at any time."
   },
   "navigation": {
     "home": "Home",
@@ -13,6 +13,61 @@
     "about": "About",
     "contact": "Contact",
     "letsTalk": "Let's Talk"
+  },
+  "whatWeDo": {
+    "title": "We Create the Future of Content, So You Don't Have To.",
+    "subtitle": "We use AI to craft ultra personalized videos, UGC, influencer style ads, and product content all generated fast, multilingual, and made to convert.",
+    "specialties": [
+      "Product CGI",
+      "AI-Generated UGC Videos",
+      "Custom AI Avatars (Your Brand's Digital Face)",
+      "Multilingual AI Video Translation (Lip-Synced + Subtitled)",
+      "Trend-Driven Vibe Marketing Content",
+      "Content Bundles for Drops, Campaigns & Evergreen Growth"
+    ]
+  },
+  "whyBrands": {
+    "title": "Why Brands Work With Us",
+    "benefits": [
+      {
+        "icon": "⚡",
+        "title": "Faster content turnaround",
+        "description": "Get high quality content in days, not weeks"
+      },
+      {
+        "icon": "💸",
+        "title": "Cheaper than influencer deals",
+        "description": "Save $$ on content production costs"
+      },
+      {
+        "icon": "🔁",
+        "title": "More content in less time",
+        "description": "Scale your content creation infinitely"
+      }
+    ]
+  },
+  "midPageCTA": {
+    "title": "Let's Talk Now",
+    "subtitle": "Ready to bring AI content to your brand? Book a free discovery call and I'll walk you through what's possible no pressure, just strategy.",
+    "button": "Book a Call",
+    "trust": "Used by creators, coaches, and startups from US, MX, EU"
+  },
+  "testimonials": {
+    "title": "What People Say About Working with AKINGZ",
+    "reviews": [
+      {
+        "quote": "The AI content we received outperformed our real influencer ads 2x over. Fast, clean, and ready to publish.",
+        "author": "DTC Skincare Founder"
+      },
+      {
+        "quote": "Loved how fast Angel delivered. The avatar concept got us attention we couldn't buy with paid ads.",
+        "author": "Lifestyle Creator"
+      },
+      {
+        "quote": "Translating our videos to Spanish, French and German using AI avatars saved us 3 weeks of creator coordination.",
+        "author": "Marketing Director, eCom Brand"
+      }
+    ]
   },
   "portfolio": {
     "title": "Portfolio",
@@ -32,7 +87,7 @@
   },
   "about": {
     "title": "About AKINGZ",
-    "description1": "I'm Angel Reyes, an entrepreneur exploring the power of AI, automation, and digital innovation to help brands, creators, and businesses grow. By building AI-driven content systems, automation frameworks, and scalable SaaS solutions, I create tools that simplify operations, unlock new opportunities, and fuel business growth in today's evolving digital economy.",
+    "description1": "I'm Angel Reyes, a visionary entrepreneur exploring AI to build smarter, scalable systems for content and branding. I launched AKINGZ to help brands grow through automation, avatar tech, and creative that never sleeps.",
     "description2": "",
     "description3": "",
     "collaborate": "Let's Collaborate",
@@ -44,8 +99,13 @@
     }
   },
   "contact": {
-    "title": "Let's Connect",
+    "title": "💬 Ready to Scale with AI?",
     "subtitle": "Ready to transform your business with cutting-edge AI solutions? Let's discuss how we can bring your vision to life.",
+    "buttons": {
+      "portfolio": "View Portfolio",
+      "letsTalk": "Let's Talk Now",
+      "subscribe": "Subscribe for AI Launch Tips"
+    },
     "form": {
       "title": "Send a Message",
       "name": "Name",

@@ -91,6 +91,13 @@ p, .body-text, .about-paragraph, .blog-text, input::placeholder, textarea::place
     overflow: hidden;
   }
 
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   /* New color utilities using CSS custom properties */
   .text-primary-dark {
     color: var(--c-primary-dark);

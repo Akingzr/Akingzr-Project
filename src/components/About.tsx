@@ -1,14 +1,12 @@
-// [CHANGELOG] 2025-01-17: Updated About stats section labels and description text to use hero-subtitle font styling to match hero section copy text
 // About section component for AKINGZ landing page
-// Updated with Newsletter and Blog sections, removed Core Expertise
+// Updated with new visionary entrepreneur copy and enhanced styling
+// Features stats section with clean typography
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Brain, Zap, Globe, Award } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation.tsx';
-import Newsletter from './Newsletter';
-import BlogPreview from './BlogPreview';
 
 const About: React.FC = () => {
   const { t, language } = useTranslation();
@@ -25,10 +23,7 @@ const About: React.FC = () => {
   ];
 
   const handleCollaborate = () => {
-    const contactSection = document.querySelector('#contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.open('https://calendly.com/akingz/consultation-consulta', '_blank');
   };
 
   return (
@@ -131,11 +126,7 @@ const About: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Newsletter Section */}
-        <Newsletter />
 
-        {/* Blog Preview Section */}
-        <BlogPreview />
       </div>
     </section>
   );

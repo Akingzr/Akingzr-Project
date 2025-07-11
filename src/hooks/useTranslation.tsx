@@ -9,7 +9,7 @@ type TranslationKey = string;
 interface TranslationContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: TranslationKey) => string;
+  t: (key: TranslationKey) => any;
 }
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
@@ -44,7 +44,7 @@ const detectLanguage = (): Language => {
 };
 
 // Get nested object value by dot notation
-const getNestedValue = (obj: any, path: string): string => {
+const getNestedValue = (obj: any, path: string): any => {
   return path.split('.').reduce((current, key) => {
     return current && current[key] !== undefined ? current[key] : null;
   }, obj);
@@ -72,7 +72,7 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
     initializeTranslations();
   }, []);
 
-  const t = (key: TranslationKey): string => {
+  const t = (key: TranslationKey): any => {
     if (!isLoaded) return key;
     const value = getNestedValue(translations[language], key);
     if (value) {

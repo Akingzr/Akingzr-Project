@@ -1,10 +1,10 @@
 {
   "hero": {
     "name": "Angel Reyes",
-    "tagline": "Soluciones de IA Pioneras para las Marcas del Mañana",
+    "tagline": "AKINGZ",
     "viewPortfolio": "Ver Portafolio",
-    "getInTouch": "Contactar",
-    "subtitle": "Donde las marcas audaces se aceleran con IA de élite.\nAutomatizando el crecimiento, elevando experiencias, y convirtiendo la visión del mañana en los resultados de hoy."
+    "getInTouch": "Hablemos Ahora",
+    "subtitle": "Contenido Impulsado por IA que Funciona Mientras Duermes. Desde UGC con IA hasta influencers avatar personalizados creamos contenido que detiene el scroll y ayuda a tu marca a crecer más rápido, en cualquier idioma, en cualquier momento."
   },
   "navigation": {
     "home": "Inicio",
@@ -12,6 +12,61 @@
     "about": "Acerca",
     "contact": "Contacto",
     "letsTalk": "Hablemos"
+  },
+  "whatWeDo": {
+    "title": "Creamos el Futuro del Contenido, Para Que Tú No Tengas Que Hacerlo.",
+    "subtitle": "Usamos IA para crear videos ultra personalizados, UGC, anuncios estilo influencer y contenido de productos todo generado rápidamente, multiidioma y hecho para convertir.",
+    "specialties": [
+      "CGI de Productos",
+      "Videos UGC Generados por IA",
+      "Avatares IA Personalizados (La Cara Digital de Tu Marca)",
+      "Traducción de Videos IA Multiidioma (Sincronizado + Subtitulado)",
+      "Contenido de Marketing Viral Basado en Tendencias",
+      "Paquetes de Contenido para Lanzamientos, Campañas y Crecimiento Perenne"
+    ]
+  },
+  "whyBrands": {
+    "title": "Por Qué las Marcas Trabajan Con Nosotros",
+    "benefits": [
+      {
+        "icon": "⚡",
+        "title": "Entrega de contenido más rápida",
+    "description": "Obtén contenido de alta calidad en días, no semanas"
+      },
+      {
+        "icon": "💸",
+        "title": "Más barato que contratos de influencers",
+        "description": "Ahorra $$ en costos de producción de contenido"
+      },
+      {
+        "icon": "🔁",
+        "title": "Más contenido en menos tiempo",
+        "description": "Escala tu creación de contenido infinitamente"
+      }
+    ]
+  },
+  "midPageCTA": {
+    "title": "Hablemos Ahora",
+    "subtitle": "¿Listo para traer contenido IA a tu marca? Agenda una llamada gratuita de descubrimiento y te mostraré qué es posible sin presión, solo estrategia.",
+    "button": "Agendar Llamada",
+    "trust": "Usado por creadores, coaches y startups de US, MX, EU"
+  },
+  "testimonials": {
+    "title": "Lo Que Dicen las Personas Sobre Trabajar con AKINGZ",
+    "reviews": [
+      {
+        "quote": "El contenido IA que recibimos superó a nuestros anuncios de influencers reales 2x. Rápido, limpio y listo para publicar.",
+        "author": "Fundador de Skincare DTC"
+      },
+      {
+        "quote": "Me encantó qué tan rápido entregó Angel. El concepto de avatar nos dio atención que no podíamos comprar con anuncios pagados.",
+        "author": "Creador de Lifestyle"
+      },
+      {
+        "quote": "Traducir nuestros videos a español, francés y alemán usando avatares IA nos ahorró 3 semanas de coordinación de creadores.",
+        "author": "Director de Marketing, Marca eCom"
+      }
+    ]
   },
   "portfolio": {
     "title": "Portafolio",
@@ -31,7 +86,7 @@
   },
   "about": {
     "title": "Acerca de AKINGZ",
-    "description1": "Soy Angel Reyes, un emprendedor explorando el poder de la IA, automatización e innovación digital para ayudar a marcas, creadores y negocios a crecer. Construyendo sistemas de contenido impulsados por IA, marcos de automatización y soluciones SaaS escalables, creo herramientas que simplifican operaciones, desbloquean nuevas oportunidades y alimentan el crecimiento empresarial en la economía digital en evolución de hoy.",
+    "description1": "Soy Angel Reyes, un emprendedor visionario explorando la IA para construir sistemas más inteligentes y escalables para contenido y branding. Lancé AKINGZ para ayudar a las marcas a crecer a través de automatización, tecnología de avatares y creatividad que nunca duerme.",
     "description2": "",
     "description3": "",
     "collaborate": "Colaboremos",
@@ -43,8 +98,13 @@
     }
   },
   "contact": {
-    "title": "Conectemos",
+    "title": "💬 ¿Listo para Escalar con IA?",
     "subtitle": "¿Listo para transformar tu negocio con soluciones de IA de vanguardia? Hablemos sobre cómo podemos hacer realidad tu visión.",
+    "buttons": {
+      "portfolio": "Ver Portafolio",
+      "letsTalk": "Hablemos Ahora",
+      "subscribe": "Suscribirse para Tips de Lanzamiento IA"
+    },
     "form": {
       "title": "Enviar un Mensaje",
       "name": "Nombre",

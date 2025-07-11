@@ -1,7 +1,5 @@
-// [CHANGELOG] 2025-01-17: Updated Portfolio section subtitle to "My AI Work" while keeping "Portfolio" as main title and updated all grey text to use hero-subtitle font styling for consistency
-// [CHANGELOG] 2025-01-17: Enhanced portfolio with video support and improved media handling
 // Portfolio component for AKINGZ landing page
-// Updated to show exactly 5 AI-generated ads with new color palette
+// Updated to show exactly 8 AI-generated projects with new color palette
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -26,20 +24,20 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "AI Influencer - Astrid",
-    titleEs: "Influencer IA - Astrid",
-    client: "Content Creation",
-    clientEs: "Creación de Contenido",
-    description: "Created a photorealistic AI influencer with engaging personality and authentic social media presence",
-    descriptionEs: "Creé una influencer de IA fotorrealista con personalidad atractiva y presencia auténtica en redes sociales",
+    title: "AI Ad for Ayurveda Brand",
+    titleEs: "Anuncio IA para Marca Ayurveda",
+    client: "Wellness Brand",
+    clientEs: "Marca de Bienestar",
+    description: "AI-generated advertisement showcasing Ayurveda products with authentic storytelling and natural wellness messaging",
+    descriptionEs: "Anuncio generado por IA mostrando productos Ayurveda con narrativa auténtica y mensajes de bienestar natural",
     metrics: [
-      { label: "Engagement", labelEs: "Engagement", value: "+400%" },
-      { label: "Cost Efficiency", labelEs: "Eficiencia", value: "+300%" },
-      { label: "Content Output", labelEs: "Producción", value: "24/7" }
+      { label: "Brand Authenticity", labelEs: "Autenticidad", value: "+350%" },
+      { label: "Wellness Appeal", labelEs: "Atractivo", value: "+280%" },
+      { label: "Conversion Rate", labelEs: "Conversión", value: "+190%" }
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-influencer-astrid.mp4",
-    tags: ["AI", "Influencer", "Social Media"]
+    video: "/portfolio/videos/ai-ad-for-ayurveda-brand.mp4",
+    tags: ["AI", "Wellness", "Advertisement"]
   },
   {
     id: 2,
@@ -124,6 +122,40 @@ const projects: Project[] = [
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     tags: ["AI", "Product", "Photography"]
+  },
+  {
+    id: 7,
+    title: "AI Influencer - Astrid",
+    titleEs: "Influencer IA - Astrid",
+    client: "Content Creation",
+    clientEs: "Creación de Contenido",
+    description: "Created a photorealistic AI influencer with engaging personality and authentic social media presence",
+    descriptionEs: "Creé una influencer de IA fotorrealista con personalidad atractiva y presencia auténtica en redes sociales",
+    metrics: [
+      { label: "Engagement", labelEs: "Engagement", value: "+400%" },
+      { label: "Cost Efficiency", labelEs: "Eficiencia", value: "+300%" },
+      { label: "Content Output", labelEs: "Producción", value: "24/7" }
+    ],
+    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    video: "/portfolio/videos/ai-influencer-astrid.mp4",
+    tags: ["AI", "Influencer", "Social Media"]
+  },
+  {
+    id: 8,
+    title: "AI Creative Campaign for Ayurveda",
+    titleEs: "Campaña Creativa IA para Ayurveda",
+    client: "Wellness Brand",
+    clientEs: "Marca de Bienestar",
+    description: "Comprehensive AI creative campaign showcasing natural Ayurveda products with holistic wellness storytelling approach",
+    descriptionEs: "Campaña creativa integral de IA mostrando productos naturales Ayurveda con enfoque narrativo de bienestar holístico",
+    metrics: [
+      { label: "Campaign Reach", labelEs: "Alcance", value: "+420%" },
+      { label: "Wellness Engagement", labelEs: "Engagement", value: "+360%" },
+      { label: "Brand Awareness", labelEs: "Reconocimiento", value: "+290%" }
+    ],
+    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    video: "/portfolio/videos/ai-ad-creative-for-ayurveda-brand.mp4",
+    tags: ["AI", "Wellness", "Campaign"]
   }
 ];
 
@@ -213,8 +245,8 @@ const Portfolio: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Projects Grid - 6 items in 3x2 layout */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Projects Grid - 8 items in responsive layout */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
           {projects.map((project, index) => {
             const videoRef = React.useRef<HTMLVideoElement>(null);
 
