@@ -36,8 +36,7 @@ const projects: Project[] = [
       { label: "Authenticity", labelEs: "Autenticidad", value: "+95%" },
       { label: "Conversion Rate", labelEs: "Conversión", value: "+180%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-model-dante-intensitylabs.mp4",
+    thumbnail: "https://img.youtube.com/vi/4RV0v9EbX64/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/4RV0v9EbX64",
     tags: ["AI", "Product", "Modeling"]
   },
@@ -54,8 +53,7 @@ const projects: Project[] = [
       { label: "Brand Trust", labelEs: "Confianza", value: "+95%" },
       { label: "Conversions", labelEs: "Conversiones", value: "+220%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-coach-max-intensitylabs.mp4",
+    thumbnail: "https://img.youtube.com/vi/fqiYa-XoXY4/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/fqiYa-XoXY4",
     tags: ["AI", "Coaching", "Fitness"]
   },
@@ -72,8 +70,7 @@ const projects: Project[] = [
       { label: "Engagement", labelEs: "Engagement", value: "+340%" },
       { label: "Production Time", labelEs: "Tiempo", value: "-80%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-ugc-daily-ritual.mp4",
+    thumbnail: "https://img.youtube.com/vi/mR_BpRIs2dY/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/mR_BpRIs2dY",
     tags: ["AI", "UGC", "Beauty"]
   },
@@ -90,8 +87,7 @@ const projects: Project[] = [
       { label: "Content Variety", labelEs: "Variedad", value: "Unlimited" },
       { label: "Production Cost", labelEs: "Costo", value: "-70%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/akingz-fashion-clone.mp4",
+    thumbnail: "https://img.youtube.com/vi/CrbT_Ye0g9k/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/CrbT_Ye0g9k",
     tags: ["AI", "Fashion", "Personal Brand"]
   },
@@ -108,7 +104,7 @@ const projects: Project[] = [
       { label: "Engagement Rate", labelEs: "Engagement", value: "+190%" },
       { label: "Conversion", labelEs: "Conversión", value: "+160%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    thumbnail: "https://img.youtube.com/vi/HD-GMNbMG8g/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/HD-GMNbMG8g",
     tags: ["AI", "Product", "Photography"]
   },
@@ -125,8 +121,7 @@ const projects: Project[] = [
       { label: "Cost Efficiency", labelEs: "Eficiencia", value: "+300%" },
       { label: "Content Output", labelEs: "Producción", value: "24/7" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-influencer-astrid.mp4",
+    thumbnail: "https://img.youtube.com/vi/VDFzZ_88j5o/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/VDFzZ_88j5o",
     tags: ["AI", "Influencer", "Social Media"]
   },
@@ -143,7 +138,7 @@ const projects: Project[] = [
       { label: "Wellness Appeal", labelEs: "Atractivo", value: "+280%" },
       { label: "Conversion Rate", labelEs: "Conversión", value: "+190%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    thumbnail: "https://img.youtube.com/vi/jSPYtHu2iT8/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/jSPYtHu2iT8",
     tags: ["AI", "Wellness", "Advertisement"]
   },
@@ -160,7 +155,7 @@ const projects: Project[] = [
       { label: "Wellness Engagement", labelEs: "Engagement", value: "+360%" },
       { label: "Brand Awareness", labelEs: "Reconocimiento", value: "+290%" }
     ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    thumbnail: "https://img.youtube.com/vi/VF1anq_KGOg/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/VF1anq_KGOg",
     tags: ["AI", "Wellness", "Campaign"]
   }
@@ -255,16 +250,12 @@ const Portfolio: React.FC = () => {
         {/* Projects Grid - 8 items in responsive layout */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {projects.map((project, index) => {
-            const videoRef = React.useRef<HTMLVideoElement>(null);
-
             const handleMouseEnter = () => {
               setHoveredProject(project.id);
-              // Video is already auto-playing, no need to start it
             };
 
             const handleMouseLeave = () => {
               setHoveredProject(null);
-              // Keep video playing as preview
             };
             
             const handleClick = (e: React.MouseEvent) => {
@@ -291,49 +282,18 @@ const Portfolio: React.FC = () => {
               >
                 {/* Media Container */}
                 <div className="relative aspect-video overflow-hidden">
-                  {project.video ? (
-                    <>
-                      {/* Auto-playing video preview */}
-                      <video
-                        ref={videoRef}
-                        src={project.video}
-                        loop
-                        muted
-                        playsInline
-                        autoPlay
-                        preload="metadata"
-                        className="w-full h-full object-cover"
-                        onLoadedData={() => {
-                          if (videoRef.current) {
-                            videoRef.current.currentTime = 0;
-                            videoRef.current.play().catch(() => {});
-                          }
-                        }}
-                      />
-                      
-                      {/* Play Button Overlay for Full Video */}
-                      <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none bg-black/20 opacity-0 group-hover:opacity-100">
-                        <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                          <Play className="w-8 h-8 text-white" />
-                        </div>
+                  {/* YouTube thumbnail with play button */}
+                  <img
+                    src={project.thumbnail}
+                    alt={language === 'es' ? project.titleEs : project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {project.videoUrl && (
+                    <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none bg-black/30 opacity-80 group-hover:opacity-100">
+                      <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <Play className="w-8 h-8 text-white" />
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Thumbnail with play button for YouTube-only videos */}
-                      <img
-                        src={project.thumbnail}
-                        alt={language === 'es' ? project.titleEs : project.title}
-                        className="w-full h-full object-cover"
-                      />
-                      {project.videoUrl && (
-                        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none bg-black/30">
-                          <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <Play className="w-8 h-8 text-white" />
-                          </div>
-                        </div>
-                      )}
-                    </>
+                    </div>
                   )}
                 </div>
                 
