@@ -5,8 +5,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Send, Linkedin, Twitter, Github, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, Twitter, Github, Instagram, CheckCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation.tsx';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,9 @@ const Contact: React.FC = () => {
     company: '',
     message: ''
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const { t } = useTranslation();
   const { ref, inView } = useInView({
@@ -29,10 +33,37 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        to_name: 'AKINGZ', // Your name
+      };
+
+      // EmailJS credentials from environment variables
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+      );
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', company: '', message: '' }); // Reset form
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleViewPortfolio = () => {
@@ -174,13 +205,50 @@ const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="group relative w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-500 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
+                disabled={isSubmitting}
+                className={`group relative w-full px-8 py-4 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 ${
+                  isSubmitting 
+                    ? 'bg-gray-600 cursor-not-allowed' 
+                    : 'bg-gradient-to-r from-teal-600 to-cyan-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25'
+                }`}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  {t('contact.form.send')}
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      {t('contact.form.send')}
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    </>
+                  )}
                 </span>
               </button>
+
+              {/* Success/Error Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-green-400 bg-green-400/10 border border-green-400/20 rounded-xl p-4"
+                >
+                  <CheckCircle className="w-5 h-5" />
+                  <span>Message sent successfully! I'll get back to you soon.</span>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl p-4"
+                >
+                  <AlertCircle className="w-5 h-5" />
+                  <span>Failed to send message. Please try again or contact me directly.</span>
+                </motion.div>
+              )}
             </form>
           </motion.div>
 
