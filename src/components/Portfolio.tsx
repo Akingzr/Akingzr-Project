@@ -24,23 +24,6 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "AI Ad for Ayurveda Brand",
-    titleEs: "Anuncio IA para Marca Ayurveda",
-    client: "Wellness Brand",
-    clientEs: "Marca de Bienestar",
-    description: "AI-generated advertisement showcasing Ayurveda products with authentic storytelling and natural wellness messaging",
-    descriptionEs: "Anuncio generado por IA mostrando productos Ayurveda con narrativa auténtica y mensajes de bienestar natural",
-    metrics: [
-      { label: "Brand Authenticity", labelEs: "Autenticidad", value: "+350%" },
-      { label: "Wellness Appeal", labelEs: "Atractivo", value: "+280%" },
-      { label: "Conversion Rate", labelEs: "Conversión", value: "+190%" }
-    ],
-    thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-ad-for-ayurveda-brand.mp4",
-    tags: ["AI", "Wellness", "Advertisement"]
-  },
-  {
-    id: 2,
     title: "AI Product Model Campaign",
     titleEs: "Campaña Modelo de Producto IA",
     client: "IntensityLabs",
@@ -57,7 +40,7 @@ const projects: Project[] = [
     tags: ["AI", "Product", "Modeling"]
   },
   {
-    id: 3,
+    id: 2,
     title: "AI Coach Max Campaign",
     titleEs: "Campaña Coach Max IA",
     client: "IntensityLabs",
@@ -74,7 +57,7 @@ const projects: Project[] = [
     tags: ["AI", "Coaching", "Fitness"]
   },
   {
-    id: 4,
+    id: 3,
     title: "UGC AI Campaign",
     titleEs: "Campaña UGC con IA",
     client: "Daily Ritual",
@@ -91,7 +74,7 @@ const projects: Project[] = [
     tags: ["AI", "UGC", "Beauty"]
   },
   {
-    id: 5,
+    id: 4,
     title: "Akingz Fashion Clone",
     titleEs: "Clon de Moda Akingz",
     client: "Personal Brand",
@@ -108,7 +91,7 @@ const projects: Project[] = [
     tags: ["AI", "Fashion", "Personal Brand"]
   },
   {
-    id: 6,
+    id: 5,
     title: "AI Influencer Product Showcase",
     titleEs: "Exhibición de Producto Influencer IA",
     client: "Product Photography",
@@ -123,8 +106,8 @@ const projects: Project[] = [
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     tags: ["AI", "Product", "Photography"]
   },
-  {
-    id: 7,
+    {
+    id: 6,
     title: "AI Influencer - Astrid",
     titleEs: "Influencer IA - Astrid",
     client: "Content Creation",
@@ -141,6 +124,23 @@ const projects: Project[] = [
     tags: ["AI", "Influencer", "Social Media"]
   },
   {
+    id: 7,
+    title: "AI Ad for Ayurveda Brand",
+    titleEs: "Anuncio IA para Marca Ayurveda",
+    client: "Wellness Brand",
+    clientEs: "Marca de Bienestar",
+    description: "AI-generated advertisement showcasing Ayurveda products with authentic storytelling and natural wellness messaging",
+    descriptionEs: "Anuncio generado por IA mostrando productos Ayurveda con narrativa auténtica y mensajes de bienestar natural",
+    metrics: [
+      { label: "Brand Authenticity", labelEs: "Autenticidad", value: "+350%" },
+      { label: "Wellness Appeal", labelEs: "Atractivo", value: "+280%" },
+      { label: "Conversion Rate", labelEs: "Conversión", value: "+190%" }
+    ],
+    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    video: "/portfolio/videos/ai-ad-cretive-for-ayurveda-brand.mp4",
+    tags: ["AI", "Wellness", "Advertisement"]
+  },
+  {
     id: 8,
     title: "AI Creative Campaign for Ayurveda",
     titleEs: "Campaña Creativa IA para Ayurveda",
@@ -154,7 +154,7 @@ const projects: Project[] = [
       { label: "Brand Awareness", labelEs: "Reconocimiento", value: "+290%" }
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-ad-creative-for-ayurveda-brand.mp4",
+    video: "/portfolio/videos/ai-ad-cretive-for-ayurveda-brand 2.mp4",
     tags: ["AI", "Wellness", "Campaign"]
   }
 ];
