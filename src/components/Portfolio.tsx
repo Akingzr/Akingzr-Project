@@ -253,22 +253,18 @@ const Portfolio: React.FC = () => {
         </motion.div>
 
         {/* Projects Grid - 8 items in responsive layout */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {projects.map((project, index) => {
             const videoRef = React.useRef<HTMLVideoElement>(null);
 
             const handleMouseEnter = () => {
               setHoveredProject(project.id);
-              if (videoRef.current) {
-                videoRef.current.play().catch(() => console.log("Video play interrupted"));
-              }
+              // Video is already auto-playing, no need to start it
             };
 
             const handleMouseLeave = () => {
               setHoveredProject(null);
-              if (videoRef.current) {
-                videoRef.current.pause();
-              }
+              // Keep video playing as preview
             };
             
             const handleClick = (e: React.MouseEvent) => {
@@ -295,33 +291,57 @@ const Portfolio: React.FC = () => {
               >
                 {/* Media Container */}
                 <div className="relative aspect-video overflow-hidden">
-                  {/* Always show thumbnail, not the iframe */}
-                  <img
-                    src={project.thumbnail}
-                    alt={language === 'es' ? project.titleEs : project.title}
-                    className="w-full h-full object-cover"
-                  />
-                  
-                  {/* Play Button Overlay */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none
-                      ${hoveredProject === project.id && project.videoUrl ? 'opacity-90' : 'opacity-100'}
-                      ${project.videoUrl ? 'bg-black/30' : 'bg-black/20'}`
-                    }
-                  >
-                    {project.videoUrl && (
-                      <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-3 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <Play className="w-6 h-6 text-white" />
+                  {project.video ? (
+                    <>
+                      {/* Auto-playing video preview */}
+                      <video
+                        ref={videoRef}
+                        src={project.video}
+                        loop
+                        muted
+                        playsInline
+                        autoPlay
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                        onLoadedData={() => {
+                          if (videoRef.current) {
+                            videoRef.current.currentTime = 0;
+                            videoRef.current.play().catch(() => {});
+                          }
+                        }}
+                      />
+                      
+                      {/* Play Button Overlay for Full Video */}
+                      <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none bg-black/20 opacity-0 group-hover:opacity-100">
+                        <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                          <Play className="w-8 h-8 text-white" />
+                        </div>
                       </div>
-                    )}
-                  </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Thumbnail with play button for YouTube-only videos */}
+                      <img
+                        src={project.thumbnail}
+                        alt={language === 'es' ? project.titleEs : project.title}
+                        className="w-full h-full object-cover"
+                      />
+                      {project.videoUrl && (
+                        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none bg-black/30">
+                          <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <Play className="w-8 h-8 text-white" />
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
                 
                 {/* Card Content */}
-                <div className="p-4">
+                <div className="p-3">
                   {/* Tags */}
                   <div className="flex items-center gap-1 mb-2">
-                    {project.tags.slice(0, 2).map(tag => (
+                    {project.tags.slice(0, 1).map(tag => (
                       <span key={tag} className="px-2 py-1 text-xs font-semibold rounded-full text-white border-none" style={{ background: 'linear-gradient(90deg, #FFA645, #FF6A00)' }}>
                         {tag}
                       </span>
@@ -329,16 +349,11 @@ const Portfolio: React.FC = () => {
                   </div>
                   
                   {/* Title and Client */}
-                  <h3 className="text-lg font-bold text-white mb-1 truncate group-hover:text-orange-400 transition-colors duration-300">
+                  <h3 className="text-sm font-bold text-white mb-1 truncate group-hover:text-orange-400 transition-colors duration-300">
                     {language === 'es' ? project.titleEs : project.title}
                   </h3>
-                  <p className="text-xs text-gray-400 mb-2 hero-subtitle">
+                  <p className="text-xs text-gray-400 mb-1 hero-subtitle">
                     {language === 'es' ? project.clientEs : project.client}
-                  </p>
-                  
-                  {/* Description - Shortened */}
-                  <p className="text-gray-300 text-sm mb-3 line-clamp-2 hero-subtitle leading-relaxed">
-                    {language === 'es' ? project.descriptionEs : project.description}
                   </p>
                 </div>
 
