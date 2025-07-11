@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, Linkedin, Twitter, Github, Instagram, CheckCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation.tsx';
-import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -39,27 +38,27 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // EmailJS configuration
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        company: formData.company,
-        message: formData.message,
-        to_name: 'AKINGZ', // Your name
-      };
+      // For Netlify Forms, we'll use a fetch request to submit the form
+      const formElement = e.target as HTMLFormElement;
+      const formData = new FormData(formElement);
+      
+      // Add the form-name for Netlify
+      formData.append('form-name', 'contact');
 
-      // EmailJS credentials from environment variables
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
-      );
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', company: '', message: '' }); // Reset form
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' }); // Reset form
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -149,7 +148,22 @@ const Contact: React.FC = () => {
           >
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8">{t('contact.form.title')}</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              {/* Hidden fields for Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
+              <div style={{ display: 'none' }}>
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </div>
+              
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div className="group">
                   <label className="block text-sm font-medium text-gray-300 mb-2">{t('contact.form.name')}</label>
@@ -235,7 +249,7 @@ const Contact: React.FC = () => {
                   className="flex items-center gap-2 text-green-400 bg-green-400/10 border border-green-400/20 rounded-xl p-4"
                 >
                   <CheckCircle className="w-5 h-5" />
-                  <span>Message sent successfully! I'll get back to you soon.</span>
+                  <span>Message sent successfully! Thank you for reaching out, I'll get back to you soon.</span>
                 </motion.div>
               )}
 
@@ -246,7 +260,7 @@ const Contact: React.FC = () => {
                   className="flex items-center gap-2 text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl p-4"
                 >
                   <AlertCircle className="w-5 h-5" />
-                  <span>Failed to send message. Please try again or contact me directly.</span>
+                  <span>Failed to send message. Please try again or contact me directly via email.</span>
                 </motion.div>
               )}
             </form>
