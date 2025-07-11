@@ -1,5 +1,5 @@
 // Portfolio component for AKINGZ landing page
-// Updated to show exactly 8 AI-generated projects with new color palette
+// Updated to show exactly 8 AI-generated projects with external video links
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -18,6 +18,7 @@ interface Project {
   metrics: { label: string; labelEs: string; value: string }[];
   thumbnail: string;
   video?: string;
+  videoUrl?: string; // External video URL (YouTube, Vimeo, etc.)
   tags: string[];
 }
 
@@ -37,6 +38,7 @@ const projects: Project[] = [
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     video: "/portfolio/videos/ai-model-dante-intensitylabs.mp4",
+    videoUrl: "https://www.youtube.com/embed/4RV0v9EbX64",
     tags: ["AI", "Product", "Modeling"]
   },
   {
@@ -54,6 +56,7 @@ const projects: Project[] = [
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     video: "/portfolio/videos/ai-coach-max-intensitylabs.mp4",
+    videoUrl: "https://www.youtube.com/embed/fqiYa-XoXY4",
     tags: ["AI", "Coaching", "Fitness"]
   },
   {
@@ -71,6 +74,7 @@ const projects: Project[] = [
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     video: "/portfolio/videos/ai-ugc-daily-ritual.mp4",
+    videoUrl: "https://www.youtube.com/embed/mR_BpRIs2dY",
     tags: ["AI", "UGC", "Beauty"]
   },
   {
@@ -88,6 +92,7 @@ const projects: Project[] = [
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     video: "/portfolio/videos/akingz-fashion-clone.mp4",
+    videoUrl: "https://www.youtube.com/embed/CrbT_Ye0g9k",
     tags: ["AI", "Fashion", "Personal Brand"]
   },
   {
@@ -104,6 +109,7 @@ const projects: Project[] = [
       { label: "Conversion", labelEs: "Conversión", value: "+160%" }
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    videoUrl: "https://www.youtube.com/embed/HD-GMNbMG8g",
     tags: ["AI", "Product", "Photography"]
   },
     {
@@ -121,6 +127,7 @@ const projects: Project[] = [
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
     video: "/portfolio/videos/ai-influencer-astrid.mp4",
+    videoUrl: "https://www.youtube.com/embed/VDFzZ_88j5o",
     tags: ["AI", "Influencer", "Social Media"]
   },
   {
@@ -137,7 +144,7 @@ const projects: Project[] = [
       { label: "Conversion Rate", labelEs: "Conversión", value: "+190%" }
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-ad-cretive-for-ayurveda-brand.mp4",
+    videoUrl: "https://www.youtube.com/embed/jSPYtHu2iT8",
     tags: ["AI", "Wellness", "Advertisement"]
   },
   {
@@ -154,7 +161,7 @@ const projects: Project[] = [
       { label: "Brand Awareness", labelEs: "Reconocimiento", value: "+290%" }
     ],
     thumbnail: "/portfolio/images/ai-model-holding-product.png",
-    video: "/portfolio/videos/ai-ad-cretive-for-ayurveda-brand 2.mp4",
+    videoUrl: "https://www.youtube.com/embed/VF1anq_KGOg",
     tags: ["AI", "Wellness", "Campaign"]
   }
 ];
@@ -246,7 +253,7 @@ const Portfolio: React.FC = () => {
         </motion.div>
 
         {/* Projects Grid - 8 items in responsive layout */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
           {projects.map((project, index) => {
             const videoRef = React.useRef<HTMLVideoElement>(null);
 
@@ -266,8 +273,8 @@ const Portfolio: React.FC = () => {
             
             const handleClick = (e: React.MouseEvent) => {
               e.preventDefault();
-              if (project.video) {
-                handleVideoClick(project.video);
+              if (project.videoUrl) {
+                handleVideoClick(project.videoUrl);
               } else {
                 const title = language === 'es' ? project.titleEs : project.title;
                 handleImageClick(project.thumbnail, title);
@@ -288,60 +295,49 @@ const Portfolio: React.FC = () => {
               >
                 {/* Media Container */}
                 <div className="relative aspect-video overflow-hidden">
-                  {project.video ? (
-                    <video
-                      ref={videoRef}
-                      src={project.video}
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <img
-                      src={project.thumbnail}
-                      alt={language === 'es' ? project.titleEs : project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                  {/* Always show thumbnail, not the iframe */}
+                  <img
+                    src={project.thumbnail}
+                    alt={language === 'es' ? project.titleEs : project.title}
+                    className="w-full h-full object-cover"
+                  />
                   
                   {/* Play Button Overlay */}
                   <div
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none
-                      ${hoveredProject === project.id && project.video ? 'opacity-0' : 'opacity-100'}
-                      ${project.video ? 'bg-black/40' : 'bg-black/20'}`
+                      ${hoveredProject === project.id && project.videoUrl ? 'opacity-90' : 'opacity-100'}
+                      ${project.videoUrl ? 'bg-black/30' : 'bg-black/20'}`
                     }
                   >
-                    {project.video && (
-                      <div className="bg-cyan-500/80 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <Play className="w-8 h-8 text-white" />
+                    {project.videoUrl && (
+                      <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-3 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <Play className="w-6 h-6 text-white" />
                       </div>
                     )}
                   </div>
                 </div>
                 
                 {/* Card Content */}
-                <div className="p-6">
+                <div className="p-4">
                   {/* Tags */}
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-1 mb-2">
                     {project.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="px-3 py-1 text-xs font-semibold rounded-full text-white border-none" style={{ background: 'linear-gradient(90deg, #FFA645, #FF6A00)' }}>
+                      <span key={tag} className="px-2 py-1 text-xs font-semibold rounded-full text-white border-none" style={{ background: 'linear-gradient(90deg, #FFA645, #FF6A00)' }}>
                         {tag}
                       </span>
                     ))}
                   </div>
                   
                   {/* Title and Client */}
-                  <h3 className="text-xl font-bold text-white mb-1 truncate group-hover:text-orange-400 transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-white mb-1 truncate group-hover:text-orange-400 transition-colors duration-300">
                     {language === 'es' ? project.titleEs : project.title}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-4 hero-subtitle">
+                  <p className="text-xs text-gray-400 mb-2 hero-subtitle">
                     {language === 'es' ? project.clientEs : project.client}
                   </p>
                   
-                  {/* Description */}
-                  <p className="text-gray-300 text-base mb-6 line-clamp-3 hero-subtitle leading-relaxed">
+                  {/* Description - Shortened */}
+                  <p className="text-gray-300 text-sm mb-3 line-clamp-2 hero-subtitle leading-relaxed">
                     {language === 'es' ? project.descriptionEs : project.description}
                   </p>
                 </div>
@@ -393,22 +389,34 @@ const Portfolio: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <video
-              src={videoModal.videoUrl}
-              controls
-              autoPlay
-              className="w-full h-full object-contain max-h-[90vh]"
-              onClick={(e) => e.stopPropagation()}
-              onError={(e) => {
-                console.error('Video error:', e);
-                console.error('Failed to load video:', videoModal.videoUrl);
-              }}
-              onLoadStart={() => console.log('✅ Video loading started:', videoModal.videoUrl)}
-              onLoadedData={() => console.log('✅ Video loaded successfully')}
-              style={{ backgroundColor: 'black' }}
-            >
-              Your browser does not support the video tag.
-            </video>
+            {videoModal.videoUrl.includes('youtube.com') || videoModal.videoUrl.includes('youtu.be') || videoModal.videoUrl.includes('vimeo.com') ? (
+              <iframe
+                src={`${videoModal.videoUrl}?modestbranding=1&rel=0&showinfo=0&controls=1&autoplay=1`}
+                title="Video Player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full object-contain max-h-[90vh]"
+                onClick={(e) => e.stopPropagation()}
+                style={{ backgroundColor: 'black', aspectRatio: '16/9' }}
+              />
+            ) : (
+              <video
+                src={videoModal.videoUrl}
+                controls
+                autoPlay
+                className="w-full h-full object-contain max-h-[90vh]"
+                onClick={(e) => e.stopPropagation()}
+                onError={(e) => {
+                  console.error('Video error:', e);
+                  console.error('Failed to load video:', videoModal.videoUrl);
+                }}
+                onLoadStart={() => console.log('✅ Video loading started:', videoModal.videoUrl)}
+                onLoadedData={() => console.log('✅ Video loaded successfully')}
+                style={{ backgroundColor: 'black' }}
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         </div>
       ) : null}
