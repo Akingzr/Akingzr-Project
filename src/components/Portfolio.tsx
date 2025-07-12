@@ -93,20 +93,20 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "AI Influencer Product Showcase",
-    titleEs: "Exhibición de Producto Influencer IA",
-    client: "Product Photography",
-    clientEs: "Fotografía de Producto",
-    description: "AI influencer demonstrating product presentation with natural hand positioning and authentic engagement style",
-    descriptionEs: "Influencer IA demostrando presentación de producto con posicionamiento natural de manos y estilo de engagement auténtico",
+    title: "AI Fitness Model - Dante",
+    titleEs: "Modelo Fitness IA - Dante",
+    client: "IntensityLabs",
+    clientEs: "IntensityLabs",
+    description: "AI fitness model showcasing workout routines and supplement products with authentic athletic presentation",
+    descriptionEs: "Modelo fitness IA mostrando rutinas de ejercicio y productos de suplementos con presentación atlética auténtica",
     metrics: [
-      { label: "Product Visibility", labelEs: "Visibilidad", value: "+250%" },
+      { label: "Athletic Appeal", labelEs: "Atractivo", value: "+280%" },
       { label: "Engagement Rate", labelEs: "Engagement", value: "+190%" },
       { label: "Conversion", labelEs: "Conversión", value: "+160%" }
     ],
     thumbnail: "https://img.youtube.com/vi/HD-GMNbMG8g/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/HD-GMNbMG8g",
-    tags: ["AI", "Product", "Photography"]
+    tags: ["AI", "Fitness", "Modeling"]
   },
     {
     id: 6,
@@ -158,6 +158,22 @@ const projects: Project[] = [
     thumbnail: "https://img.youtube.com/vi/VF1anq_KGOg/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/VF1anq_KGOg",
     tags: ["AI", "Wellness", "Campaign"]
+  },
+  {
+    id: 9,
+    title: "AI Model Product Photography",
+    titleEs: "Fotografía de Producto Modelo IA",
+    client: "Product Photography",
+    clientEs: "Fotografía de Producto",
+    description: "Professional AI model showcasing products with natural poses and authentic presentation for e-commerce and marketing",
+    descriptionEs: "Modelo profesional de IA mostrando productos con poses naturales y presentación auténtica para e-commerce y marketing",
+    metrics: [
+      { label: "Photo Quality", labelEs: "Calidad", value: "4K+" },
+      { label: "Production Speed", labelEs: "Velocidad", value: "+500%" },
+      { label: "Cost Savings", labelEs: "Ahorro", value: "-85%" }
+    ],
+    thumbnail: "/portfolio/images/ai-model-holding-product.png",
+    tags: ["AI", "Photography", "Product"]
   }
 ];
 
@@ -247,8 +263,8 @@ const Portfolio: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Projects Grid - 8 items in responsive layout */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Projects Grid - 9 items in 3x3 layout */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {projects.map((project, index) => {
             const handleMouseEnter = () => {
               setHoveredProject(project.id);
