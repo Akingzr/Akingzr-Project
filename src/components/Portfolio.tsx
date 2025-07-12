@@ -290,7 +290,7 @@ const Portfolio: React.FC = () => {
                 initial={{ opacity: 0, y: 50, rotateY: -15 }}
                 animate={inView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer text-left w-full hover:shadow-2xl hover:shadow-orange-500/25 hover:border-orange-500/30"
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer text-left w-full hover:shadow-2xl hover:shadow-orange-500/25 hover:border-orange-500/30 hover:-translate-y-2 active:scale-95"
                 onClick={handleClick}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -303,11 +303,13 @@ const Portfolio: React.FC = () => {
                     src={project.thumbnail}
                     alt={language === 'es' ? project.titleEs : project.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
                   />
                   {project.videoUrl && (
                     <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none bg-black/30 opacity-80 group-hover:opacity-100">
-                      <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <Play className="w-8 h-8 text-white" />
+                      <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-cyan-500/50 group-hover:rotate-3">
+                        <Play className="w-8 h-8 text-white transition-transform duration-300 group-hover:scale-110" />
                       </div>
                     </div>
                   )}

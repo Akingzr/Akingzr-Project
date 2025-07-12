@@ -220,7 +220,8 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`group relative w-full px-8 py-4 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 ${
+                aria-label={isSubmitting ? "Sending message..." : "Send message"}
+                className={`group relative w-full px-8 py-4 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black ${
                   isSubmitting 
                     ? 'bg-gray-600 cursor-not-allowed' 
                     : 'bg-gradient-to-r from-teal-600 to-cyan-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25'
@@ -347,6 +348,11 @@ const Contact: React.FC = () => {
               <p className="text-gray-300 text-sm font-light tracking-wide hero-subtitle leading-relaxed">
                 {t('contact.availability.description')}
               </p>
+              <div className="mt-3 p-3 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-xl border border-orange-500/30">
+                <p className="text-orange-300 text-xs font-semibold">
+                  🔥 Limited spots available this month - Book your consultation now!
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
